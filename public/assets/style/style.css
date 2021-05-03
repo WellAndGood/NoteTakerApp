@@ -1,0 +1,17 @@
+.fa-save {
+    font-size: 200%;
+    padding: 5px;
+}
+
+.fa-save:hover {
+    cursor: pointer;
+}
+
+.fa-pen {
+    font-size: 180%;
+    padding: 5px;
+}
+
+.fa-pen:hover {
+    cursor: pointer;
+}
