@@ -1,5 +1,4 @@
 const express = require('express');
-const noteData = require('./db/db.json');
 const fs = require('fs')
 const path = require('path')
 const moment = require('moment');
@@ -22,7 +21,12 @@ app.get("/notes", function (req, res) {
 });
 
 
-app.get('/api/notes', (req, res) => res.json(noteData));
+app.get('/api/notes', (req, res) => {
+  console.log('hwlloosdifsldkfja;lsdkjf;alskjdfl;j')
+  let noteData = require('./db/db.json');
+  res.json(noteData)
+  noteData = []
+});
 
 app.post('/api/notes', function (req, res) { 
   const readFile = JSON.parse(fs.readFileSync('./db/db.json'));
@@ -30,7 +34,7 @@ app.post('/api/notes', function (req, res) {
   noteToAdd.id = moment().toISOString()
   readFile.push(noteToAdd);
   fs.writeFileSync('./db/db.json', JSON.stringify(readFile))
-  res.json(readFile)
+  return res.json(readFile)
 })
 
 // Causing problems due to not recognizing the id (is currently set as a string of Moment)
@@ -38,7 +42,7 @@ app.delete('/api/notes/:id', function (req, res) {
   const readFile = JSON.parse(fs.readFileSync('./db/db.json'));
   const notesToKeep = readFile.filter((noteToThrow) => noteToThrow.id !== req.params.id);
   fs.writeFileSync('./db/db.json', JSON.stringify(notesToKeep))
-  res.json(notesToKeep)
+  return res.json(notesToKeep)
 })
 
 app.listen(PORT, () => {

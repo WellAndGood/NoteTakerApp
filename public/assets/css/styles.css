@@ -11,8 +11,11 @@ html, body {
 .icons i {
   margin-left: 15px;
   margin-right: 15px;
-  font-size: 1.5rem;
   cursor: pointer;
+}
+
+.textEntry {
+  display: inline;
 }
 
 .note-textarea, .note-title {
@@ -22,6 +25,24 @@ html, body {
   border: none;
 }
 
+.fa-save {
+  font-size: 200%;
+  padding: 5px;
+}
+
+.fa-save:hover {
+  cursor: pointer;
+}
+
+.fa-pen {
+  font-size: 180%;
+  padding: 5px;
+}
+
+.fa-pen:hover {
+  cursor: pointer;
+}
+
 .note-textarea {
   resize: none;
   height: calc(100% - 63px);
@@ -29,9 +50,10 @@ html, body {
 }
 
 .note-title {
-  height: 50px;
+  height: 100px;
   margin-top: 13px;
   font-size: 3rem;
+  width: 600px;
 }
 
 .note-title:read-only, .note-textarea:read-only {
@@ -68,3 +90,4 @@ html, body {
   padding: 20px;
   cursor: pointer;
 }
+
