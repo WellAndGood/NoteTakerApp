@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/flatly/bootstrap.min.css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
   <link rel="stylesheet" href="./assets/style/style.css">
 </head>
 
@@ -25,7 +26,7 @@
     <div class="row">
       <div class="col-4 list-container">
         <div class="card">
-          <ul class="list-group">
+          <ul class="list-group" id="list-group-id">
             <!-- This is where the notes will be posted -->
           </ul>
         </div>
@@ -38,7 +39,57 @@
       </div>
     </div>
   </div>
-  <script src="/assets/js/index.js"></script>
+  <script src="./assets/js/index.js"></script>
 </body>
 
+  <script type="text/javascript">
+
+    const runNoteQuery = () => {
+    
+      fetch('/api/notes', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+          .then((response) => response.json())
+          .then((noteData) => {
+            console.log('tableData', noteData);
+            console.log('------------------------------------');
+
+            for (let i = 0; i < noteData.length; i++) {
+            
+              const notesList = document.querySelector('#list-group-id')
+
+              // Temporary code until I format correctly
+              let listItem = document.createElement('li');
+              listItem.classList.add('list-group-item', 'mt-4');
+
+              // Create elements from JSON data
+              const hrBreak = document.createElement('hr');
+              
+              // Generate note title based on JSON data 
+              const noteTitle = document.createElement('h3');
+              noteTitle.textContent = noteData[i].title;
+
+              // Generate note data based on JSON data
+              const idEl = document.createElement('p');
+              idEl.textContent = noteData[i].text;
+
+              // Append all elements to the listItem
+              listItem.appendChild(noteTitle);
+              listItem.appendChild(idEl);
+
+              // Append listItem to tableList
+              notesList.appendChild(listItem);
+            }
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+      };
+    
+      // runNoteQuery()
+
+  </script>
 </html>
