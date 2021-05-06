@@ -34,13 +34,12 @@ app.post('/api/notes', function (req, res) {
 })
 
 // Causing problems due to not recognizing the id (is currently set as a string of Moment)
-app.delete('/api/notes:id', function (req, res) { 
+app.delete('/api/notes/:id', function (req, res) { 
   const readFile = JSON.parse(fs.readFileSync('./db/db.json'));
   const notesToKeep = readFile.filter((noteToThrow) => noteToThrow.id !== req.params.id);
   fs.writeFileSync('./db/db.json', JSON.stringify(notesToKeep))
   res.json(notesToKeep)
 })
-
 
 app.listen(PORT, () => {
   console.log(`App listening on PORT: ${PORT}`);
