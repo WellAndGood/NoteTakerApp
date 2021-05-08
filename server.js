@@ -22,10 +22,8 @@ app.get("/notes", function (req, res) {
 
 
 app.get('/api/notes', (req, res) => {
-  console.log('hwlloosdifsldkfja;lsdkjf;alskjdfl;j')
   let noteData = require('./db/db.json');
-  res.json(noteData)
-  noteData = []
+  return res.json(noteData)
 });
 
 app.post('/api/notes', function (req, res) { 
