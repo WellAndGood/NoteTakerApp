@@ -10,22 +10,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public")); // this line enables connection to the 'public' folder
 
-// Unable to connect
+// Route to main page
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
-// Unable to connect
+// Route to 'notes' app
 app.get("/notes", function (req, res) {
   res.sendFile(path.join(__dirname, "/public/notes.html"));
 });
 
-
+// 'Get' method for API/JSON of notes
 app.get('/api/notes', (req, res) => {
   let noteData = require('./db/db.json');
   return res.json(noteData)
 });
 
+// 'Post' method for API/JSON of notes
 app.post('/api/notes', function (req, res) { 
   const readFile = JSON.parse(fs.readFileSync('./db/db.json'));
   const noteToAdd = req.body;
@@ -35,14 +36,17 @@ app.post('/api/notes', function (req, res) {
   return res.json(readFile)
 })
 
-// Causing problems due to not recognizing the id (is currently set as a string of Moment)
+// 'Delete' method (uses string of Moment to set a unique ID)
+// Seems to only work when you've rebooted the server
 app.delete('/api/notes/:id', function (req, res) { 
   const readFile = JSON.parse(fs.readFileSync('./db/db.json'));
   const notesToKeep = readFile.filter((noteToThrow) => noteToThrow.id !== req.params.id);
+  console.log(notesToKeep)
   fs.writeFileSync('./db/db.json', JSON.stringify(notesToKeep))
   return res.json(notesToKeep)
 })
 
+// PORT listener
 app.listen(PORT, () => {
   console.log(`App listening on PORT: ${PORT}`);
 });
