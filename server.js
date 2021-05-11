@@ -20,15 +20,15 @@ app.get("/notes", function (req, res) {
   res.sendFile(path.join(__dirname, "/public/notes.html"));
 });
 
-// // Route to main page
-// app.get("/*", function (req, res) {
-//   res.sendFile(path.join(__dirname, "/public/index.html"));
-// });
-
 // 'Get' method for API/JSON of notes
 app.get('/api/notes', (req, res) => {
   let noteData = require('./db/db.json');
   return res.json(noteData)
+});
+
+// // Route to main page
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
 // 'Post' method for API/JSON of notes
