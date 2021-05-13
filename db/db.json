@@ -1,17 +1,1 @@
-[
-    {
-        "title": "Start world domination plan",
-        "text": "Step 1) Learn how to fs.readFile()",
-        "id": "2021-05-06T01:43:20.184Z"
-    },
-    {
-        "title": "Continue world domination plan",
-        "text": "Step 2) Learn how to use 'Delete' method",
-        "id": "2021-05-06T22:30:35.795Z"
-    },
-    {
-        "title": "Complete world domination plan",
-        "text": "Write README file and deploy to Heroku",
-        "id": "2021-05-10T23:17:54.650Z"
-    }
-]
+[{"title":"Step 1 for World Domination","text":"Learn the difference between require and JSON.parse","id":"2021-05-13T22:36:00.141Z"},{"title":"Step 2 for World Domination","text":"Submit updated homework, with functioning /get method","id":"2021-05-13T22:36:32.837Z"},{"title":"Step 3 for World Domination","text":"Submit homework to BCS and appeal previous grade. Success!","id":"2021-05-13T22:37:04.964Z"}]

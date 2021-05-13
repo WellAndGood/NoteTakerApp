@@ -22,7 +22,8 @@ app.get("/notes", function (req, res) {
 
 // 'Get' method for API/JSON of notes
 app.get('/api/notes', (req, res) => {
-  let noteData = require('./db/db.json');
+  // let noteData = require('./db/db.json');
+  let noteData = JSON.parse(fs.readFileSync('./db/db.json'));
   return res.json(noteData)
 });
 
