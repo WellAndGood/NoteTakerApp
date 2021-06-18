@@ -1,4 +1,4 @@
-# Team Profile Builder - Bootcamp Spot - Homework #
+# Team Profile Builder
 ## Author: WellAndGood
 
 # Table of Contents
